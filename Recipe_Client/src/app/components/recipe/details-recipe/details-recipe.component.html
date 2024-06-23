@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <ng-container *ngIf="recipe && category">
+        <div class="mb-3 d-flex justify-content-between" style="background-color: #FF69B4; padding: 10px; border-radius: 8px;">
+            <div>
+                <h1>{{ recipe.name }}</h1>
+                <span class="badge bg-primary">{{ category.name }}</span>
+            </div>
+            <img src="{{ category.iconPath }}" alt="{{ category.iconPath }}" class="img-fluid" style="width: 100px;">
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="d-flex align-items-center">
+                    <span *ngFor="let i of [].constructor(recipe.level)" style="color: #FF69B4;">★</span>
+                    <span class="ms-2">Difficulty Level</span>
+                </div>
+                <div class="mt-3">
+                    <p>ID: {{ recipe.id }}</p>
+                    <p>User ID: {{ recipe.userId }}</p>
+                    <p>Category ID: {{ recipe.categoryId }}</p>
+                    <p>Date: {{ recipe.date }}</p>
+                    <p>Prep Time: {{ recipe.preparationTime | hoursAndMinutes }}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="{{ recipe.img }}" alt="Recipe Image" class="img-fluid mb-3 rounded" style="border: 2px solid #FF69B4;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Ingredients</h3>
+                <ul class="list-group list-group-flush">
+                    <li *ngFor="let ingredient of recipe?.ingredients" class="list-group-item">{{ ingredient }}</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>Instructions</h3>
+                <ol class="list-group list-group-flush">
+                    <li *ngFor="let instruction of recipe?.instructions; let i=index" class="list-group-item">{{ i + 1 }}. {{ instruction }}</li>
+                </ol>
+            </div>
+        </div>
+        <div class="text-end mt-3">
+            <button *ngIf="isUser" class="btn btn-danger me-2" style="background-color: #FF69B4; border-color: #FF69B4;" (click)="delete()">Delete</button>
+            <button *ngIf="isUser" class="btn btn-primary" style="background-color: #FF69B4; border-color: #FF69B4;" (click)="edit()">Edit</button>
+        </div>
+    </ng-container>
+</div>

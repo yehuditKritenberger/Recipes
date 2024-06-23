@@ -1,0 +1,27 @@
+.btn-pink {
+    background-color: #ff69b4;
+    border-color: #ff69b4;
+    color: white;
+}
+
+.btn-pink:hover {
+    background-color: #ff1493;
+    border-color: #ff1493;
+}
+
+.form-container .form-label {
+    font-weight: bold;
+}
+
+.form-container .form-control,
+.form-container .form-select,
+.form-container textarea {
+    border: 2px solid #ff69b4;
+}
+
+.form-container .form-control:focus,
+.form-container .form-select:focus,
+.form-container textarea:focus {
+    border-color: #ff1493;
+    box-shadow: none;
+}
